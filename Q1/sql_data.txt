@@ -1,0 +1,49 @@
+CREATE DATABASE pi_db
+USE pi_db
+
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    age INT,
+    signup_date DATE
+);
+
+INSERT INTO users (name, email, age, signup_date) VALUES
+('Rahul Sharma', 'rahul.sharma@rediffmail.com', FLOOR(20 + (RAND() * 50)), CURDATE() - INTERVAL FLOOR(RAND() * 365) DAY),
+('Sneha Verma', 'sneha.verma@gmail.com', FLOOR(20 + (RAND() * 50)), CURDATE() - INTERVAL FLOOR(RAND() * 365) DAY),
+('Ravi Patel', 'ravi.patel@yahoo.com', FLOOR(20 + (RAND() * 50)), CURDATE() - INTERVAL FLOOR(RAND() * 365) DAY),
+('Priya Nair', 'priya.nair@outlook.com', FLOOR(20 + (RAND() * 50)), CURDATE() - INTERVAL FLOOR(RAND() * 365) DAY),
+('Amitabh Gupta', 'amitabh.gupta@rediffmail.com', FLOOR(20 + (RAND() * 50)), CURDATE() - INTERVAL FLOOR(RAND() * 365) DAY),
+('Pooja Desai', 'pooja.desai@in.com', FLOOR(20 + (RAND() * 50)), CURDATE() - INTERVAL FLOOR(RAND() * 365) DAY),
+('Vikas Reddy', 'vikas.reddy@hotmail.com', FLOOR(20 + (RAND() * 50)), CURDATE() - INTERVAL FLOOR(RAND() * 365) DAY),
+('Kiran Yadav', 'kiran.yadav@rediffmail.com', FLOOR(20 + (RAND() * 50)), CURDATE() - INTERVAL FLOOR(RAND() * 365) DAY),
+('Anjali Mehta', 'anjali.mehta@gmail.com', FLOOR(20 + (RAND() * 50)), CURDATE() - INTERVAL FLOOR(RAND() * 365) DAY),
+('Vivek Kumar', 'vivek.kumar@yahoo.com', FLOOR(20 + (RAND() * 50)), CURDATE() - INTERVAL FLOOR(RAND() * 365) DAY);
+
+SELECT * FROM users;
+
+CREATE TABLE bank_accounts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    account_number VARCHAR(50),
+    email VARCHAR(100),
+    address VARCHAR(255),
+    balance DECIMAL(15, 2),
+    debt DECIMAL(15, 2),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+INSERT INTO bank_accounts (user_id, account_number, email, address, balance, debt) VALUES
+(1, FLOOR(1000000000 + (RAND() * 9000000000)), 'rahul.sharma@rediffmail.com', '123 MG Road, New Delhi', ROUND(RAND() * 1000000, 2), ROUND(RAND() * 50000, 2)),
+(2, FLOOR(1000000000 + (RAND() * 9000000000)), 'sneha.verma@gmail.com', '45 Park Street, Kolkata', ROUND(RAND() * 1000000, 2), ROUND(RAND() * 50000, 2)),
+(3, FLOOR(1000000000 + (RAND() * 9000000000)), 'ravi.patel@yahoo.com', '78 Nehru Nagar, Ahmedabad', ROUND(RAND() * 1000000, 2), ROUND(RAND() * 50000, 2)),
+(4, FLOOR(1000000000 + (RAND() * 9000000000)), 'priya.nair@outlook.com', '90 MG Road, Kochi', ROUND(RAND() * 1000000, 2), ROUND(RAND() * 50000, 2)),
+(5, FLOOR(1000000000 + (RAND() * 9000000000)), 'amitabh.gupta@rediffmail.com', '12 Bandra West, Mumbai', ROUND(RAND() * 1000000, 2), ROUND(RAND() * 50000, 2)),
+(6, FLOOR(1000000000 + (RAND() * 9000000000)), 'pooja.desai@in.com', '67 Residency Road, Bengaluru', ROUND(RAND() * 1000000, 2), ROUND(RAND() * 50000, 2)),
+(7, FLOOR(1000000000 + (RAND() * 9000000000)), 'vikas.reddy@hotmail.com', '123 Banjara Hills, Hyderabad', ROUND(RAND() * 1000000, 2), ROUND(RAND() * 50000, 2)),
+(8, FLOOR(1000000000 + (RAND() * 9000000000)), 'kiran.yadav@rediffmail.com', '9 Civil Lines, Jaipur', ROUND(RAND() * 1000000, 2), ROUND(RAND() * 50000, 2)),
+(9, FLOOR(1000000000 + (RAND() * 9000000000)), 'anjali.mehta@gmail.com', '56 Connaught Place, New Delhi', ROUND(RAND() * 1000000, 2), ROUND(RAND() * 50000, 2)),
+(10, FLOOR(1000000000 + (RAND() * 9000000000)), 'vivek.kumar@yahoo.com', '89 Indiranagar, Bengaluru', ROUND(RAND() * 1000000, 2), ROUND(RAND() * 50000, 2));
+
+SELECT * FROM bank_accounts;
