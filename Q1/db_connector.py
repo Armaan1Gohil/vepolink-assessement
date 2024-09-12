@@ -7,7 +7,7 @@ def lambda_handler(event, context):
     conn = mysql.connector.connect(
         host='database-1.c3eacmea6by0.ap-southeast-2.rds.amazonaws.com',
         user='admin',
-        password='s-3g0ywfMLyA<(_9P6BNUpra?t?d',
+        password='s-3g0ywfM?t?d',
         database='pi_db'
     )
     
